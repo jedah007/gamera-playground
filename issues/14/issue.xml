@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gamera-database version="2.0">
+  <glyphs>
+    <glyph uly="3869" ulx="2010" nrows="1" ncols="6">
+      <ids state="MANUAL">
+        <id name="skip" confidence="1.000000"/>
+      </ids>
+      <data>
+        0 6 
+      </data>
+      <features scaling="1.0">
+        <feature name="fourier_broken">
+          1.0 0.00862878687372 0.00862878687371 0.402552988566 0.402552988566
+          0.015147028975 0.015147028975 0.0106590671642 0.0106590671642
+          0.0451549855635 0.0451549855635 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+          0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+          0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+        </feature>
+      </features>
+    </glyph>
+  </glyphs>
+</gamera-database>
