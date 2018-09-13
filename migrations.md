@@ -19,7 +19,8 @@ Link: https://www.wxpython.org/Phoenix/docs/html/classic_vs_phoenix.html#classic
 ### Zutreffende Modifikationen
 
 Functions and Classes Modifications
-- BitmapFrom*
+
+- BitmapFrom\*
 - CustomDataFormat
 - Empty[Bitmap/Icon/Image]
 - IconFromBitmap
@@ -31,15 +32,17 @@ Functions and Classes Modifications
 - SetBitmapSelected
 - SplashScreen
 - StockCursor
-- Validator_IsSilent
+- Validator\_IsSilent
 
 wx.DC:
+
 - BeginDrawing
 - EndDrawing
 - GetResolution
 - Ok
 
 wx.Window:
+
 - GetSizeTuple
 - SetBestFittingSize
 - SetDimensions ?
@@ -47,4 +50,5 @@ wx.Window:
 - SetVirtualSizeHints
 
 Modules which have moved:
+
 - SplashScreen
