@@ -2,7 +2,7 @@
 
 ## Migration Guide
 
-Link: https://www.wxpython.org/Phoenix/docs/html/MigrationGuide.html
+Link: [Migration-Guide](https://www.wxpython.org/Phoenix/docs/html/MigrationGuide.html)
 
 ### Zutreffende Abschnitte
 
@@ -14,16 +14,17 @@ Link: https://www.wxpython.org/Phoenix/docs/html/MigrationGuide.html
 
 ## Classic vs Phoenix
 
-Link: https://www.wxpython.org/Phoenix/docs/html/classic_vs_phoenix.html#classic-vs-phoenix
+Link: [Classic-vs-Phoenix](https://www.wxpython.org/Phoenix/docs/html/classic_vs_phoenix.html#classic-vs-phoenix)
 
 ### Zutreffende Modifikationen
 
 Functions and Classes Modifications
 
-- BitmapFrom\*
+- BitmapFrom[Image/Icon]
 - CustomDataFormat
 - Empty[Bitmap/Icon/Image]
 - IconFromBitmap
+- ImageFromStream
 - MaskColour
 - PyDropTarget
 - PySimpleApp
