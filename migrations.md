@@ -39,7 +39,6 @@ wx.DC:
 
 - BeginDrawing
 - EndDrawing
-- GetResolution
 - Ok
 
 wx.Window:
