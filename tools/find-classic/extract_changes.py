@@ -12,5 +12,4 @@ for table in soup.find_all('table'):
         classic_items.append(classic.text)
 
 with open('classic-items.txt', 'w') as f:
-    for item in classic_items:
-        f.write(item + '\n')
+    [f.write(item + '\n') for item in classic_items]
