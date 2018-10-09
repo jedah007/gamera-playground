@@ -24,6 +24,7 @@ Functions and Classes Modifications
   - Image: 
     - *gamera_icons.py* muss neu generiert werden
     - `BitmapFromImage(Image)` -> `Bitmap(Image)` (Funktion existiert nicht mehr - auch nicht deprecated!)
+    - TODO (inkl. Code-Generierung anpassen!)
   - Icon: [Conversion](https://wiki.wxpython.org/WorkingWithImages#Conversions_Between_wx.Image.2C_wx.Bitmap.2C_wx.Cursor.2C_wx.Icon_and_String_Data)
 - CustomDataFormat
 - Empty[Bitmap/Image]
@@ -54,18 +55,24 @@ Functions and Classes Modifications
 - StockCursor
   - `StockCursor` -> `Cursor`
 - Validator\_IsSilent
+  - `Validator_IsSilent()` -> `Validator.IsSilent()`
 
 wx.DC:
 
 - BeginDrawing / EndDrawing
   - wxPython3 Doku:
+  
   ```python
    # These have been deprecated in wxWidgets.  Since they never
    # really did anything to begin with, just make them be NOPs.
    def BeginDrawing(self):  pass
    def EndDrawing(self):  pass
   ```
+
   - beide entfernt
+- GetResolution
+  - `wx.PostScriptDC.(Get/Set)Resolution` existiert nicht mehr, bisher keine Migration gefunden
+  - TODO
 - Ok
   - `Ok` -> `IsOk`
 
@@ -92,10 +99,22 @@ wx.Window:
 Modules which have moved:
 
 - SplashScreen
+  - `wx.SplashScreen` -> `wx.adv.SplashScreen` (s.o.)
+
+## Versionen
+
+Bisheriges Prinzip:
+
+```python
+if wx.VERSION < (2,3):
+  ...
+```
+
+Auch bei Sprung von 3.x auf 4.x so umsetzen?
 
 ## Weitere (undokumentierte) Migrationen
 
-_Memo_: Nach Regex "$[A-Z].\*\_[A-Z].\*^ suchen ?
+_Memo_: Nach Regex "[A-Z]+[a-z]+[A-Za-z]\*\_[A-Z]+[a-z]+[A-Za-z]\*" suchen ?
 
 - PostScriptDC\_GetResolution
 - PostScriptDC\_SetResolution
@@ -103,4 +122,3 @@ _Memo_: Nach Regex "$[A-Z].\*\_[A-Z].\*^ suchen ?
 ## Sonstiges
 
 - gamera\_icons.getToolMenuBitmap existiert nicht: toolbar.py:74
-
