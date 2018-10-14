@@ -1,0 +1,2 @@
+# Log valgrind output
+valgrind --log-file="issue-track.xyz.log" --track-origins=yes python testconvexhull_xzy.py
