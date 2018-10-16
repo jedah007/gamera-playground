@@ -79,14 +79,12 @@ class Point {
   };
 
 typedef std::vector<Point> PointVector;
-inline bool greater_distance(const Point &origin, const Point &p1, const Point &p2)
-{
+inline bool greater_distance(const Point &origin, const Point &p1, const Point &p2) {
   double dx2 = (double)p2.x() - origin.x();
   double dx1 = (double)p1.x() - origin.x();
   double dy2 = (double)p2.y() - origin.y();
   double dy1 = (double)p1.y() - origin.y();
-  if (dy1 * dy1 + dx1 * dx1 > dy2 * dy2 + dx2 * dx2)
-  {
+  if (dy1 * dy1 + dx1 * dx1 > dy2 * dy2 + dx2 * dx2) {
     return true;
   }
   return false;
@@ -94,14 +92,12 @@ inline bool greater_distance(const Point &origin, const Point &p1, const Point &
 
 // positive when p0p1 clockwise oriented compared to p0p2
 // zero when all points collinear
-inline double clockwise_orientation(const Point &p0, const Point &p1, const Point &p2)
-{
+inline double clockwise_orientation(const Point &p0, const Point &p1, const Point &p2) {
   return ((double)p1.x() - p0.x()) * ((double)p2.y() - p0.y()) -
          ((double)p2.x() - p0.x()) * ((double)p1.y() - p0.y());
 }
 
-inline double polar_angle(Point center, Point p2)
-{
+inline double polar_angle(Point center, Point p2) {
   double dx = double(p2.x()) - center.x();
   double dy = double(p2.y()) - center.y();
   return atan2(dy, dx);
@@ -109,23 +105,19 @@ inline double polar_angle(Point center, Point p2)
 
 // see Cormen et al.: Introduction to Algorithms.
 // 2nd ed., MIT Press, p. 949, 2001
-PointVector *convex_hull_from_points(PointVector *points)
-{
+PointVector *convex_hull_from_points(PointVector *points) {
   //get leftmost and top point and save it in (*points)[0]
   size_t min_x = points->at(0).x();
   size_t min_y = points->at(0).y();
   size_t min_i = 0;
   size_t i;
-  for (i = 0; i < points->size(); i++)
-  {
-    if (points->at(i).x() < min_x)
-    {
+  for (i = 0; i < points->size(); i++) {
+    if (points->at(i).x() < min_x) {
       min_x = points->at(i).x();
       min_y = points->at(i).y();
       min_i = i;
     }
-    else if (points->at(i).x() == min_x && points->at(i).y() < min_y)
-    {
+    else if (points->at(i).x() == min_x && points->at(i).y() < min_y) {
       min_x = points->at(i).x();
       min_y = points->at(i).y();
       min_i = i;
@@ -141,8 +133,7 @@ PointVector *convex_hull_from_points(PointVector *points)
   double polarangle;
   Point p;
 
-  for (PointVector::iterator it = points->begin() + 1; it != points->end(); it++)
-  {
+  for (PointVector::iterator it = points->begin() + 1; it != points->end(); it++) {
     p = *it;
     polarangle = polar_angle(origin, p);
     found = stack_polarangle.find(polarangle);
@@ -157,6 +148,7 @@ PointVector *convex_hull_from_points(PointVector *points)
     }
   }
 
+
   // start with graham scan
   PointVector *retVector = new PointVector;
   std::map<double, Point>::iterator pointIt;
@@ -167,37 +159,29 @@ PointVector *convex_hull_from_points(PointVector *points)
   retVector->push_back(pointIt->second); // push point[1]
   pointIt++;
 
+  // points represent a line
+  if (pointIt == stack_polarangle.end()) {
+    return retVector;
+  }
+
   retVector->push_back(pointIt->second); // push point[2]
   pointIt++;
 
   //pointIt starts at point[3]
-  for (; pointIt != stack_polarangle.end(); pointIt++)
-  {
+  for (; pointIt != stack_polarangle.end(); pointIt++) {
     p = pointIt->second;
-    while (retVector->size() > 2 && clockwise_orientation(*(retVector->end() - 2), *(retVector->end() - 1), p) <= 0.0)
-    {
+    while (retVector->size() > 2 && clockwise_orientation(*(retVector->end() - 2), *(retVector->end() - 1), p) <= 0.0) {
       retVector->pop_back();
     }
     retVector->push_back(p);
   }
 
   return retVector;
-  }
+}
 
 
-int main()
-{
+int main() {
   PointVector vec;
-  /*
-  vec.push_back(Point(0, 0));
-  vec.push_back(Point(1, 0));
-  vec.push_back(Point(2, 0));
-  vec.push_back(Point(2, 1));
-  vec.push_back(Point(2, 2));
-  vec.push_back(Point(1, 3));
-  vec.push_back(Point(0, 2));
-  vec.push_back(Point(0, 1));
-  */
   vec.push_back(Point(0, 0));
   vec.push_back(Point(0, 1));
   vec.push_back(Point(0, 2));

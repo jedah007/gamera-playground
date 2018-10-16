@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-O1 -std=c++11 -pg -D_DEBUG -g -Wall
+CFLAGS=-std=c++11 -pg -D_DEBUG -g -Wall
 
 PROG ?= prog
 OBJS = main.o
