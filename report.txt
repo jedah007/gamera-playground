@@ -1,0 +1,32 @@
+Targets
+    Occurrences of 'wx.VERSION' 
+Found Occurrences  (20 usages found)
+    Unclassified occurrence  (19 usages found)
+        gamera  (19 usages found)
+            gamera/gui  (19 usages found)
+                args_gui.py  (7 usages found)
+                    DONE 59 if wx.VERSION < (2, 9):
+                    DONE 123 if wx.VERSION >= (2, 5):
+                    DONE 130 if wx.VERSION >= (2, 5) and "gtk2" in wx.PlatformInfo:
+                    DONE 134 if wx.VERSION < (2, 8):
+                    DONE 213 if wx.VERSION < (2, 8):
+                    DONE 223 if wx.VERSION < (2, 8):
+                    DONE 234 if wx.VERSION < (2, 9):
+                classifier_display.py  (1 usage found)
+                    DONE 1824 if wx.VERSION >= (2, 5):
+                gamera_display.py  (5 usages found)
+                    DONE 103 if wx.VERSION >= (2, 5):
+                    DONE 533 if wx.VERSION < (2, 5):
+                    DONE 894 if wx.VERSION < (2, 5):
+                    DONE 1076 if wx.VERSION >= (2, 5):
+                    DONE 1128 if wx.VERSION >= (2,5):
+                gui.py  (3 usages found)
+                    DONE 147 if wx.VERSION >= (2, 5):
+                    DONE 153 if wx.VERSION >= (2, 5) and "gtk2" in wx.PlatformInfo:
+                    DONE 188 if wx.VERSION < (2, 5):
+                gui_util.py  (1 usage found)
+                    DONE 108 if wx.VERSION < (2, 8):
+                icon_display.py  (1 usage found)
+                    DONE 62 if not (wx.VERSION >= (2, 5) and wx.Platform == '__WXGTK__'):
+                matplotlib_support.py  (1 usage found)
+                    DONE 91 if wx.VERSION < (2, 5):
