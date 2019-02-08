@@ -81,12 +81,14 @@ wx.Window:
 - GetSizeTuple
 - SetBestFittingSize
   - existierende Lösung:
+
   ```python
     if wx.VERSION < (2, 8):
        window.SetBestFittingSize(wx.Size(50, 150))
     else:
        window.SetInitialSize(wx.Size(50, 150))
   ```
+
   - bisher nicht geändert
 - SetDimensions?
   - mit IDE nicht gefunden
@@ -122,3 +124,75 @@ _Memo_: Nach Regex "[A-Z]+[a-z]+[A-Za-z]\*\_[A-Z]+[a-z]+[A-Za-z]\*" suchen ?
 ## Sonstiges
 
 - gamera\_icons.getToolMenuBitmap existiert nicht: toolbar.py:74
+- Code-Anleitungen in PyDoc anpassen (bei Verwendung alter API)
+  - gui_support.py:39: wx.EmptyImage
+- PyCharm-Issues:
+  - toolbar.py:74 gamera_icons.getToolbarMenuBitmap() existiert nicht
+
+## Progress
+
+### WXP3
+
+| Methode                      | Migration | Implementiert | Getestet | Anmerkungen |
+|:-----------------------------|:---------:|:-------------:|:--------:|:------------|
+| resize_window_virtual        | x | x | x | Test: Edit-Classifier Window |
+| create_help_display          | x | x | x | Test: Docstring wird angezeigt |
+| Calltip                      | x | x | x | Test(Shell): `import itertools` -> `itertool.count(` -> Enter |
+| configure_icon_display_style | x | x | x | Test: Icons im 'Objects'-Bereich korrekt dargestellt |
+| configure_print_dialog_data  | x | x | x | Test: Print dialog öffnet sich zu Bild |
+| register_get_first_child     | x | x | x | Test: Beim Laden der Anwendung aufgerufen |
+| register_set_scrollbars      | x | x | x | Test: Scrollbar-Funktion wird registriert |
+| set_grid_line_colour         | x | x | x | Test: Gridline im Classif.-Display wird korrekt dargestellt |
+| register_renderer_access     | x | x | x | Test: Beim Laden der Anwendung aufgerufen |
+| init_image_handlers          | x | x | x | Test: Beim Laden der Anwendung aufgerufen |
+| set_control_down             | x | x | x | Test: Aufgerufen wenn in Shell Up/Down gedrückt wird |
+
+### WXP4
+
+| Methode                      | Migration | Implementiert | Getestet | Anmerkungen |
+|:-----------------------------|:---------:|:-------------:|:--------:|:---|
+| BitmapFrom[Image/Icon]       | x | x | x | Test: Externes Bild in Programm laden |
+| CustomDataFormat             | x | x | x | |
+| Empty[Bitmap/Image]          | x | x | x | |
+| IconFromBitmap               | x | x | x | Test: Icons werden allgemein angezeigt |
+| ImageFromStream              | x | x | x | |
+| MaskColour                   | x | x | o | In wxPython3 schon deprecated (use wx.Mask) |
+| PyDropTarget                 | x | x | x | Test: Bilddatei in icon-display droppen |
+| PySimpleApp                  | x | x | x | |
+| PyValidator                  | x | x | x | Test: knn-editing -> Zahl-Validation klappt |
+| SetCursor                    | o | o | o | wx.SetCursor und wx.Window.SetCursor gibts! |
+| SetBitmapSelected            | o | o | o | existiert und nicht deprecated |
+| StockCursor                  | x | x | o | |
+| Validator\_IsSilent          | x | x | x | |
+| BeginDrawing / EndDrawing    | x | x | x | |
+| Ok                           | x | x | x | |
+| GetSizeTuple                 | x | x | x | |
+| SetBestFittingSize           | x | x | o | Bereits abgedeckt |
+| SetDimensions                | x | x | x | |
+| SetToolTipString             | x | x | x | Test: Tooltips werden angezeigt |
+| SetVirtualSizeHints          | x | x | o | Bereits abgedeckt |
+| SplashScreen + Konstanten    | x | x | x | Test: Wird zentriert beim Start angezeigt |
+| PostScriptDC_Get/SetResol    | o | o | o | Funktion existiert auch in wxPython3 nicht |
+| TreeCtrl#Get/SetPyData       | x | x | o | |
+| Menu#AppendMenu              | x | x | x | Test: Submenus werden erzeugt |
+| wx.SAVE                      | x | x | x | |
+| wx.PYAPP_ASSERT_SUPPRESS     | x | x | x | |
+| wx.grid.EVT_GRID_CELL_CHANGE | x | x | x | |
+| PyGridCellRenderer           | x | x | x | |
+| ListCtrl#SetStringItem       | x | x | x | |
+
+- neue *gamera_icons.py*-Datei generieren: x
+- Importänderungen nochmal prüfen (z.T. evtl. genutzte Imports entfernt): o
+- Manchmal gibts im Edit-Classifier Bild eine horizontale Scrollbar - scheint Random zu sein? o
+- wx.ImageList.AddIcon -> wx.ImageList.Add (Rückgabewert prüfen!) o
+- wx.ImageList#InsertImageListItem -> wx.ImageList#InsertItem x
+- neue Buffer-API zum Einlesen von Bildern verarbeiten (to_buffer), req. Python 2.7! x
+  - Prüfung: `PyBuffer_Release` notwendig? o
+- Umsetzung event.m_itemIndex o
+- Umsetzung FlexGridSizer (knn_editing_display) Konstruktor-Überladung o
+
+### Bugfixes
+
+- *knn_editing_display.py*: ChoiceBox zeigt nun initial den ersten Algorithmus an
+- *StatusDisplay.py:* line 44: (File -> Biollante...) wx.wx.LEFT -> 'module' object has no attribute 'wx'
+- Doku->'Training Tutorial'->'Selecting Glyphs': Statt *Shift* muss *Ctrl* gedrückt werden
