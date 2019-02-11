@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gamera-database version="2.0">
+  <symbols>
+    <symbol name="_group"/>
+    <symbol name="_group._part"/>
+    <symbol name="_split.cc_analysis"/>
+    <symbol name="_split.cc_and_cluster"/>
+    <symbol name="_split.splitx"/>
+    <symbol name="_split.splitx_left"/>
+    <symbol name="_split.splitx_max"/>
+    <symbol name="_split.splitx_right"/>
+    <symbol name="_split.splity"/>
+    <symbol name="_split.splity_bottom"/>
+    <symbol name="_split.splity_top"/>
+    <symbol name="letter.latin.a.small"/>
+    <symbol name="letter.latin.b.small"/>
+    <symbol name="skip"/>
+  </symbols>
+</gamera-database>

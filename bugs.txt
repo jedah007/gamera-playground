@@ -3,3 +3,9 @@ Traceback (most recent call last):
   File "/home/jens/anaconda3/envs/gamera-new/lib/python2.7/site-packages/gamera/gui/gamera_display.py", line 981, in Draw
     isSelected)
 TypeError: The 'self' argument of 'to_buffer_colorize' can not have pixel type 'RGB'. Acceptable values are ONEBIT, ONEBIT, ONEBIT, ONEBIT, ONEBIT, and GREYSCALE.
+
+File -> Save history...
+Traceback (most recent call last):
+  File "/home/jens/anaconda3/envs/gamera-old/lib/python2.7/site-packages/gamera/gui/gui.py", line 478, in _OnSaveHistory
+    fd.write(self.history.GetText())
+AttributeError: 'ShellFrame' object has no attribute 'history'

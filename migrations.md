@@ -182,13 +182,13 @@ _Memo_: Nach Regex "[A-Z]+[a-z]+[A-Za-z]\*\_[A-Z]+[a-z]+[A-Za-z]\*" suchen ?
 | ListCtrl#SetStringItem       | x | x | x | |
 
 - neue *gamera_icons.py*-Datei generieren: x
-- Importänderungen nochmal prüfen (z.T. evtl. genutzte Imports entfernt): o
+- Importänderungen nochmal prüfen (z.T. evtl. genutzte Imports entfernt): x
 - Manchmal gibts im Edit-Classifier Bild eine horizontale Scrollbar - scheint Random zu sein? o
-- wx.ImageList.AddIcon -> wx.ImageList.Add (Rückgabewert prüfen!) o
+- wx.ImageList.AddIcon -> wx.ImageList.Add (Rückgabewert prüfen!) x
 - wx.ImageList#InsertImageListItem -> wx.ImageList#InsertItem x
 - neue Buffer-API zum Einlesen von Bildern verarbeiten (to_buffer), req. Python 2.7! x
   - Prüfung: `PyBuffer_Release` notwendig? o
-- Umsetzung event.m_itemIndex o
+- Umsetzung event.m_itemIndex x
 - Umsetzung FlexGridSizer (knn_editing_display) Konstruktor-Überladung o
 
 ### Bugfixes
